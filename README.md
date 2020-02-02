@@ -32,17 +32,93 @@ I'm a bit confused chicken.
 ## What are the key concepts? ##
 
 ### Tokens ###
+There are a few types of tokens to be aware of. API Keys, MAC Tokens for examples.  For the purposes of OIDC/OAuth we use "Bearer" tokens:
 
-### Parties ###
+Bearer tokens - a standardised string of characters used by a bearer to access a resource.   
+They can be either: 
+    a) a meaningless string
+    b) a JSON string of data called a JWT (or "jot") based on the open standard RFC 7519, which can be signed into a JWS and/or encrypted into a JWE
 
-Authorisation Server
-Relying party
+#### Here's what a JWT looks like ####
 
-### Grants ###
+```javascript
+{
+  "alg": "HS256",
+  "typ": "JWT"
+}
+.
+{
+  "sub": "1234567890",
+  "name": "John Doe",
+  "admin": true
+}
+.
+HMACSHA256(
+  base64UrlEncode(header) + "." +
+  base64UrlEncode(payload),
+  secret)
+```
+
+Which would get BASE64 encoded to:
+
+```
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ
+```
+
+In OAuth 2.0 there are three uses for tokens:
+1) Authorisation token - provided on a succesful authentication and used to obtain an access token
+2) Access token - used to gain access to a resource
+3) Refresh token - sometimes received with an access token and used to get a new access token when the previous one has expired 
+
+## Grants ###
+Defined in OAuth grants define the type of token scheme used for the authorisation process. In OAuth 2.0 there is:
+1) Authorisation Code grant - request an authorisation token via a redirect, then use this to request an access token
+2) Implicit grant - request an access token via a redirect
+3) Resource Owner Password Credential grant - client gets credentials from resource owner, then uses these to request an access token.  Used where the resource owner trusts the client.
+4) Client Credential grant - client reqests an access token using their own credentials
 
 ### Flows ###
+While flows are mentioned in OAuth 2.0, OIDC 1.0 fully defines a set of flows based around OAuth grants:
+1) Authorisation code flow - Basically the authorisation code grant, but with some extra bells on
+2) Implicit flow - Basically the implicit grant, but with some extra bells
+3) Hybrid flow - A combination of authorisation code and implicit grant, with even more bells on
+
+### Scopes ###
+Scopes provide a method to limit access to a resource for a client, making the authorisation more granular than normal session-based authorisation 
+Scopes are mentioned in OAuth 2.0, but OIDC makes this real by providing a number of built in scopes.  For example:
+* profile	requests access to default profile claims
+* email	requests access to email and email_verified claims
+* address	requests access to address claim
+* phone	requests access to phone_number and phone_number_verified claims
+
+### Claims ###
+Claims are an OIDC concept.  They define the granular "thing" claimed by the client, within the scope requested. For example, the profile scope has these and more:
+* name
+* family_name
+* given_name
+* middle_name
+* nickname
+* preferred_username
+
+### Response Types ###
+An OAuth defined field used to request a particular token grant.  OIDC extends this to request a particular authentication flow.
+
+OAuth response_types:
+code - Authorisation code grant
+token - Implicit grant
+
+OIDC extra response types:
+* id_token
+* id_token token
+* code id_token
+* code token
+* code id_token token
+* none
+
+Note, response_types and scopes can be mixed and matches.  E.g. you can have an OAuth response_type with an OIDC scope.
 
 ## Bring them all together ##
+So, here are the auth options that OIDC/OAuth provides. It gets complicated so this may not be all correct!
 
 | Spec | OIDC Flow | OAuth Authorization grant type | response_type | openid scope extension? | /authorize response | /token reponse |
 |-----------|-----------|--------------------------------------|---------------------|-------------------------|----------------------|--------------------|
@@ -59,10 +135,14 @@ Relying party
 | OIDC 1.0 | Hybrid | Auth code & Implicit | code id_token token | - | ID, Auth & Access  | ID & Access tokens |
 | OIDC 1.0 | n/a | n/a | none | doesn't matter | none | none |
 
+Note, for the demo we're going to use the OAuth's Auth code grant with OIDC scope extension. 
+
 ## Sources 
 
-
-
+https://scotch.io/tutorials/the-anatomy-of-a-json-web-token
+https://jwt.io/
+https://developer.okta.com/blog/2017/07/25/oidc-primer-part-1
+https://medium.com/@darutk/diagrams-of-all-the-openid-connect-flows-6968e3990660
 
 
 
