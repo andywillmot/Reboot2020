@@ -44,20 +44,20 @@ Relying party
 
 ## Bring them all together ##
 
-| ﻿Originating Specification | OIDC Flow type     | OAuth Authorization grant type                 | response_type       | openid scope extension? | /authorize response      | /token reponse     |
-|---------------------------|--------------------|------------------------------------------------|---------------------|-------------------------|--------------------------|--------------------|
-| OAuth 2.0 RFC6749         | Authorisation code | Authorisation code                             | code                | no                      | Auth token               | Access token       |
-| OAuth 2.0 RFC6749         | Implicit           | Implicit                                       | token               | doesn't matter          | Access token             | not used           |
-| OAuth 2.0 RFC6749         | n/a                | Resource Owner Password Credentials            | n/a                 | no                      | not used                 | Access token       |
-| OAuth 2.0 RFC6749         | n/a                | Client Credentials                             | n/a                 | no                      | not used                 | Access token       |
-| Open ID Connect Core 1.0  | Authorisation code | Authorisation code                             | code                | yes                     | Auth token               | ID & Access tokens |
-| Open ID Connect Core 1.0  | Implicit           | Implicit                                       | id_token            | doesn't matter          | ID token                 | not used           |
-| Open ID Connect Core 1.0  | Implicit           | Implicit                                       | id_token token      | doesn't matter          | ID & Access tokens       | not used           |
-| Open ID Connect Core 1.0  | Hybrid             | Authorisation code                             | code id_token       | doesn't matter          | ID & Auth tokens         | ID & Access tokens |
-| Open ID Connect Core 1.0  | Hybrid             | Effectively both authorisation code & implicit | code token          | yes                     | Auth & Access tokens     | ID & Access tokens |
-| Open ID Connect Core 1.0  | Hybrid             | Effectively both authorisation code & implicit | code token          | no                      | Auth & Access tokens     | Access token       |
-| Open ID Connect Core 1.0  | Hybrid             | Effectively both authorisation code & implicit | code id_token token |                         | ID, Auth & Access tokens | ID & Access tokens |
-| Open ID Connect Core 1.0  | n/a                | n/a                                            | none                | doesn't matter          |                          |                    |
+| Spec | OIDC Flow | OAuth Authorization grant type | response_type | openid scope extension? | /authorize response | /token reponse |
+|-----------|-----------|--------------------------------------|---------------------|-------------------------|----------------------|--------------------|
+| OAuth 2.0 | Auth code | Auth code | code | no | Auth token | Access token |
+| OAuth 2.0 | Implicit | Implicit | token | - | Access token | not used |
+| OAuth 2.0 | n/a | Resource Owner  Password Credentials | - | no | not used | Access token |
+| OAuth 2.0 | n/a | Client Credentials | - | no | not used | Access token |
+| OIDC 1.0 | Auth code | Auth code | code | yes | Auth token | ID & Access tokens |
+| OIDC 1.0 | Implicit | Implicit | id_token | - | ID token | not used |
+| OIDC 1.0 | Implicit | Implicit | id_token token | - | ID & Access tokens | not used |
+| OIDC 1.0 | Hybrid | Auth code | code id_token | - | ID & Auth tokens | ID & Access tokens |
+| OIDC 1.0 | Hybrid | Auth code & Implicit | code token | yes | Auth & Access tokens | ID & Access tokens |
+| OIDC 1.0 | Hybrid | Auth code & Implicit | code token | no | Auth & Access tokens | Access token |
+| OIDC 1.0 | Hybrid | Auth code & Implicit | code id_token token | - | ID, Auth & Access  | ID & Access tokens |
+| OIDC 1.0 | n/a | n/a | none | doesn't matter | none | none |
 
 ## Sources 
 
