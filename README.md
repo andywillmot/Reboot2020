@@ -121,7 +121,7 @@ Note, *response_types* and *scopes* can be mixed and matched.  E.g. you can have
 ## Bring them all together ##
 So, here are the auth options that OIDC/OAuth provides. It gets complicated so this may not be all correct!
 
-| Spec | OIDC Flow | OAuth Authorization grant type | response_type | openid scope extension? | /authorize response | /token reponse |
+| Spec | OIDC Flow | OAuth Authorization grant | response_type | OIDC scope? | /authorize response | /token reponse |
 |-----------|-----------|--------------------------------------|---------------------|-------------------------|----------------------|--------------------|
 | OAuth 2.0 | Auth code | Auth code | code | no | Auth token | Access token |
 | OAuth 2.0 | Implicit | Implicit | token | - | Access token | not used |
@@ -134,7 +134,7 @@ So, here are the auth options that OIDC/OAuth provides. It gets complicated so t
 | OIDC 1.0 | Hybrid | Auth code & Implicit | code token | yes | Auth & Access tokens | ID & Access tokens |
 | OIDC 1.0 | Hybrid | Auth code & Implicit | code token | no | Auth & Access tokens | Access token |
 | OIDC 1.0 | Hybrid | Auth code & Implicit | code id_token token | - | ID, Auth & Access  | ID & Access tokens |
-| OIDC 1.0 | n/a | n/a | none | doesn't matter | none | none |
+| OIDC 1.0 | n/a | n/a | none | - | none | none |
 
 Note, for the demo we're going to use the OAuth's Auth code grant with OIDC scope extension. 
 
