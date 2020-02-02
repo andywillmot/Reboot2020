@@ -14,6 +14,6 @@ Ok, it's not https - so not particularly secure as any man in the middle could r
 7. Create a new API.  Enter a name and an audience (this is used as config within the django API and react client).  Leave everything else as defaults and save.
 8. Lastly, click on Users and Roles menu to create a user that you'll use to login to the react app with.
 
-That should be it!.  You now have 21 days free trial to play with your IDP.
+That should be it!  You now have 21 days free trial to play with your IDP.
 
 
