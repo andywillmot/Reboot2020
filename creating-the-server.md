@@ -14,22 +14,27 @@ virtualenv env
 ```
 The activation script you use is dependent on the shell you're using - I'm on powershell.  
 
-3. Update the JWT_AUTH variable in mysite/mysite/settings.py with your Auth0 settings.  
+3. Install the dependencies
+```
+pip install -r requirements.txt
+```
+
+4. Update the JWT_AUTH variable in mysite/mysite/settings.py with your Auth0 settings.  
 JWT_AUDIENCE is your API identifier/audience   
 JWT_ISSUER is you Auth0 domain   
 
-4. Also update line 21 in mysite/mysite/settings.py replacing the domain name with your Auth0 one.
+5. Also update line 21 in mysite/mysite/settings.py replacing the domain name with your Auth0 one.
 
-5. Setup the database
+6. Setup the database
 ```
 cd Reboot2020\mysite
 python manage.py migrate
 ```
-6. Run the server interactively
+7. Run the server interactively
 ```
 python manage.py runserver
 ```
-7. Test
+8. Test
 You should be able browse to http://localhost:8000/api/public and see a sucessfull JSON returned.
 Also try browsing to http://localhost:8000/api/private and you should see an authentication failure provided by Django Rest Framework.
 
