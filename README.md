@@ -73,7 +73,7 @@ In OAuth 2.0 there are three types of *bearer token*:
 3) **Refresh token** - sometimes received with an access token and used to get a new access token when the previous one has expired 
 
 And OIDC 1.0 introduces another token:   
-4) **Identity token** - used to described information about the identity of the user
+  4. **Identity token** - used to described information about the identity of the user
 
 ## Grants ###
 Defined in OAuth, *grants* define the type of token scheme used for the authorisation process. In OAuth 2.0 there is:
@@ -83,14 +83,13 @@ Defined in OAuth, *grants* define the type of token scheme used for the authoris
 4) **Client Credential grant** - client reqests an access token using their own credentials
 
 ## Flows ##
-While *flows* are mentioned in OAuth 2.0, OIDC 1.0 fully defines a set of flows based around OAuth grants:
+While *flows* are mentioned in OAuth 2.0, it's OIDC 1.0 that fully defines a set of flows based around OAuth grants:
 1) **Authorisation code flow** - Basically the authorisation code grant, but with some extra bells on
 2) **Implicit flow** - Basically the implicit grant, but with some extra bells
 3) **Hybrid flow** - A combination of authorisation code and implicit grant, with even more bells on
 
 ## Scopes ##
-*Scopes* provide a method to limit access to a resource for a client, making the authorisation more granular than normal session-based authorisation.  
-Scopes are mentioned in OAuth 2.0, but OIDC makes this real by providing a number of built in ones.  For example:
+*Scopes* provide a method to limit access to a resource for a client, making the authorisation more granular than normal session-based authorisation. Again, scopes are mentioned in OAuth 2.0, but it's OIDC that makes them real by providing a number of built in ones.  For example:
 * **profile** - requests access to default profile claims
 * **email** - requests access to email and email_verified claims
 * **address** - requests access to address claim

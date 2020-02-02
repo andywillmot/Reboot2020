@@ -4,7 +4,7 @@ The demo intends to show the a standard OIDC/OAuth Authorisation code flow.
 
 Here's the architecture:
 
-![Demo Architecture] (https://github.com/andywillmot/Reboot2020/blob/master/architecture.png "Demo architecture")
+![Demo Architecture](https://github.com/andywillmot/Reboot2020/blob/master/architecture.png "Demo architecture")
 
 ## The Identity Provider - do this first so you have your settings
 
