@@ -29,7 +29,7 @@ I'm a bit confused chicken.
 
 ![Standards map](https://github.com/andywillmot/Reboot2020/blob/master/OpenIDConnect-Map-4Feb2014.png "Standards Map")
 
-## What are the key concepts? ##
+## The key concepts: Tokens, Grants, Flows, Scopes, Claims & Response Types ##
 
 ### Tokens ###
 There are a few types of tokens to be aware of.  API Keys, MAC Tokens for example.  But, for the purposes of OIDC/OAuth we use "Bearer" tokens:
@@ -72,7 +72,7 @@ In OAuth 2.0 there are three types of *bearer token*:
 2) **Access token** - used to gain access to a resource
 3) **Refresh token** - sometimes received with an access token and used to get a new access token when the previous one has expired 
 
-And OIDC 1.0 introduces another token:
+And OIDC 1.0 introduces another token:   
 4) **Identity token** - used to described information about the identity of the user
 
 ## Grants ###
@@ -146,10 +146,10 @@ Note, for the demo we're going to use the one in bold - OAuth's Auth code grant 
 
 ## Sources ##
 
-https://scotch.io/tutorials/the-anatomy-of-a-json-web-token
-https://jwt.io/
-https://developer.okta.com/blog/2017/07/25/oidc-primer-part-1
-https://medium.com/@darutk/diagrams-of-all-the-openid-connect-flows-6968e3990660
+https://scotch.io/tutorials/the-anatomy-of-a-json-web-token  
+https://jwt.io/  
+https://developer.okta.com/blog/2017/07/25/oidc-primer-part-1   
+https://medium.com/@darutk/diagrams-of-all-the-openid-connect-flows-6968e3990660  
 
 
 
