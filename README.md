@@ -35,7 +35,7 @@ I'm a bit confused chicken.
 There are a few types of tokens to be aware of.  API Keys, MAC Tokens for example.  But, for the purposes of OIDC/OAuth we use "Bearer" tokens:
 
 **Bearer tokens**
->>A standardised string of characters used by a bearer to access a resource.   
+>A Base64 string of characters used by the bearer (the client) to access a resource provided by a resource owner.   
 
 They can be either:
 * a meaningless string
@@ -71,6 +71,9 @@ In OAuth 2.0 there are three types of *bearer token*:
 1) **Authorisation token** - provided on a succesful authentication and used to obtain an access token
 2) **Access token** - used to gain access to a resource
 3) **Refresh token** - sometimes received with an access token and used to get a new access token when the previous one has expired 
+
+And OIDC 1.0 introduces another token:
+4) **Identity token** - used to described information about the identity of the user
 
 ## Grants ###
 Defined in OAuth, *grants* define the type of token scheme used for the authorisation process. In OAuth 2.0 there is:
@@ -109,25 +112,28 @@ OAuth response_types:
 * **token** - Implicit grant
 
 OIDC extra response types:
-* **id_token**
-* **id_token token**
-* **code id_token**
-* **code token**
-* **code id_token token**
-* **none**
+* id_token
+* id_token token
+* code id_token
+* code token
+* code id_token token
+* none
 
 Note, *response_types* and *scopes* can be mixed and matched.  E.g. you can have an OAuth response_type with an OIDC scope.
 
-## Bring them all together ##
+This excellent post on medium describes each of these response types in detail:  
+https://medium.com/@darutk/diagrams-of-all-the-openid-connect-flows-6968e3990660
+
+## Bringing them all together ##
 So, here are the auth options that OIDC/OAuth provides. It gets complicated so this may not be all correct!
 
-| Spec | OIDC Flow | OAuth Authorization grant | response_type | OIDC scope? | /authorize response | /token reponse |
+| Specification | OIDC Flow | OAuth Authorization grant | response_type | OIDC scope? | /authorize response | /token reponse |
 |-----------|-----------|--------------------------------------|---------------------|-------------------------|----------------------|--------------------|
 | OAuth 2.0 | Auth code | Auth code | code | no | Auth token | Access token |
 | OAuth 2.0 | Implicit | Implicit | token | - | Access token | not used |
 | OAuth 2.0 | n/a | Resource Owner  Password Credentials | - | no | not used | Access token |
 | OAuth 2.0 | n/a | Client Credentials | - | no | not used | Access token |
-| OIDC 1.0 | Auth code | Auth code | code | yes | Auth token | ID & Access tokens |
+| **OIDC 1.0** | **Auth code** | **Auth code** | **code** | **yes** | **Auth token** | **ID & Access tokens** |
 | OIDC 1.0 | Implicit | Implicit | id_token | - | ID token | not used |
 | OIDC 1.0 | Implicit | Implicit | id_token token | - | ID & Access tokens | not used |
 | OIDC 1.0 | Hybrid | Auth code | code id_token | - | ID & Auth tokens | ID & Access tokens |
@@ -136,7 +142,7 @@ So, here are the auth options that OIDC/OAuth provides. It gets complicated so t
 | OIDC 1.0 | Hybrid | Auth code & Implicit | code id_token token | - | ID, Auth & Access  | ID & Access tokens |
 | OIDC 1.0 | n/a | n/a | none | - | none | none |
 
-Note, for the demo we're going to use the OAuth's Auth code grant with OIDC scope extension. 
+Note, for the demo we're going to use the one in bold - OAuth's Auth code grant with OIDC scope extension. 
 
 ## Sources ##
 
