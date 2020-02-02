@@ -28,7 +28,7 @@ You can get this going quickly by working through ![how to build the server](cre
 So if you followed the guides OK (and I didn't make any mistakes), you now should have:
 1) An OIDC compliant IDP via Auth0
 2) A react client app served through http://localhost:3000
-3) A Django-based API
+3) A Django-based authenticated API served through http://localhost:8000/api/private
 
 You now should be able to "Login" from the client whereby you'll be redirected to an Auth0 login page.  Login with your user you setup for the IDP.  You should be redirected back to the client app where you then should be able to client on External API and ping the endpoint to return a successful response. 
 
