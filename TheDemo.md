@@ -32,4 +32,4 @@ So if you followed the guides OK (and I didn't make any mistakes), you now shoul
 
 You now should be able to "Login" from the client whereby you'll be redirected to an Auth0 login page.  Login with your user you setup for the IDP.  You should be redirected back to the client app where you then should be able to client on External API and ping the endpoint to return a successful response. 
 
-
+Introspect the JWT access token returned with Chrome Dev Tools by finding it in the Auth0 response and using https://JWT.io to decode. 
