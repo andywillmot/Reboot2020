@@ -24,7 +24,7 @@
 ## The key concepts: Tokens, Grants, Flows, Scopes, Claims & Response Types ##
 
 ### Tokens ###
-There are a few types of tokens to be aware of.  API Keys, MAC Tokens for example.  But, for the purposes of OIDC/OAuth we use "Bearer" tokens:
+There are a few types of tokens to be aware of.  API Keys, MAC Tokens for example.  But, for the purposes of OIDC/OAuth access we use "Bearer" tokens:
 
 **Bearer tokens**
 >A Base64 string of characters used by the bearer (the client) to access a resource provided by a resource owner.   
@@ -58,14 +58,17 @@ Which, for transmission, would get BASE64 encoded to:
 ```
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ
 ```
-### How do we use bearer tokens in OAuth ###
-In OAuth 2.0 there are three types of *bearer token*:
-1) **Authorisation token** - provided on a succesful authentication and used to obtain an access token
-2) **Access token** - used to gain access to a resource
-3) **Refresh token** - sometimes received with an access token and used to get a new access token when the previous one has expired 
+### How do we use bearer tokens and codes in OAuth ###
+In OAuth 2.0 there are two types of *bearer token*:
+1. **Access token** - used to gain access to a resource
+2. **Refresh token** - sometimes received with an access token and used to get a new access token when the previous one has expired 
 
-And OIDC 1.0 introduces another token:   
-  4. **Identity token** - used to described information about the identity of the user
+OIDC 1.0 introduces another token:   
+3. **Identity token** - used to described information about the identity of the user
+
+Plus for certain authentication flows, OAuth 2.0 uses:
+4. **Authorisation code** - a code provided on a succesful authentication and used to obtain an access token
+
 
 ## Grants ###
 Defined in OAuth, *grants* define the type of token scheme used for the authorisation process. In OAuth 2.0 there is:
@@ -120,16 +123,16 @@ So, here are the auth options that OIDC/OAuth provides. It gets complicated so t
 
 | Specification | OIDC Flow | OAuth Authorization grant | response_type | OIDC scope? | /authorize response | /token reponse |
 |-----------|-----------|--------------------------------------|---------------------|-------------------------|----------------------|--------------------|
-| OAuth 2.0 | Auth code | Auth code | code | no | Auth token | Access token |
+| OAuth 2.0 | Auth code | Auth code | code | no | Auth code | Access token |
 | OAuth 2.0 | Implicit | Implicit | token | - | Access token | not used |
 | OAuth 2.0 | n/a | Resource Owner  Password Credentials | - | no | not used | Access token |
 | OAuth 2.0 | n/a | Client Credentials | - | no | not used | Access token |
-| **OIDC 1.0** | **Auth code** | **Auth code** | **code** | **yes** | **Auth token** | **ID & Access tokens** |
+| **OIDC 1.0** | **Auth code** | **Auth code** | **code** | **yes** | **Auth code** | **ID & Access tokens** |
 | OIDC 1.0 | Implicit | Implicit | id_token | - | ID token | not used |
 | OIDC 1.0 | Implicit | Implicit | id_token token | - | ID & Access tokens | not used |
-| OIDC 1.0 | Hybrid | Auth code | code id_token | - | ID & Auth tokens | ID & Access tokens |
-| OIDC 1.0 | Hybrid | Auth code & Implicit | code token | yes | Auth & Access tokens | ID & Access tokens |
-| OIDC 1.0 | Hybrid | Auth code & Implicit | code token | no | Auth & Access tokens | Access token |
+| OIDC 1.0 | Hybrid | Auth code | code id_token | - | ID token & Auth code | ID & Access tokens |
+| OIDC 1.0 | Hybrid | Auth code & Implicit | code token | yes | Auth code & Access token | ID & Access tokens |
+| OIDC 1.0 | Hybrid | Auth code & Implicit | code token | no | Auth code & Access token | Access token |
 | OIDC 1.0 | Hybrid | Auth code & Implicit | code id_token token | - | ID, Auth & Access  | ID & Access tokens |
 | OIDC 1.0 | n/a | n/a | none | - | none | none |
 
