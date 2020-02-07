@@ -66,7 +66,7 @@ In OAuth 2.0 there are two types of *bearer token*:
 OIDC 1.0 introduces another token:   
 3. **Identity token** - used to described information about the identity of the user
 
-Plus for certain authentication flows, OAuth 2.0 uses:
+Plus for certain authentication flows, OAuth 2.0 uses:  
 4. **Authorisation code** - a code provided on a succesful authentication and used to obtain an access token
 
 
