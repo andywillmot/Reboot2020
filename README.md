@@ -1,5 +1,8 @@
 # Reboot2020 - OIDC/OAuth Lightning talk
 
+Go ![here](https://github.com/andywillmot/Reboot2020/blob/master/TheDemo.md) for the demo instructions. 
+
+
 ## Definitions - It's all pretty clear!
 ### OAuth
 >An open standard for **access delegation**, commonly used as a way for Internet users to grant websites or applications access to their information on other websites but without giving them the passwords.

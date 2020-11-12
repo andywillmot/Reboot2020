@@ -8,7 +8,7 @@ git clone https://github.com/auth0-samples/auth0-react-samples.git
 
 2. Install dependencies
 ```
-cd auth0-react-samples/02-Calling-an-API
+cd auth0-react-samplesS\Sample-01
 npm install
 ```
 3. Configure Auth0 settings
@@ -24,9 +24,14 @@ Then update it with your Auth0 settings.  Here's mine:
 }
 ```
 
-4. Repoint to to your API by updating ExternalApi.js line 15 to:
+4. Repoint the backend of the client to you Django API by updating src/utils/views/ExternalApi.js line 61:
+From
 ```javascript
-const response = await fetch("http://localhost:8000/api/private", {
+      const response = await fetch(`${apiOrigin}/api/external`, {
+```
+to
+```javascript
+      const response = await fetch(`http://localhost:8000/api/private`, {
 ```
 
 5. Run it!  It should be available at http://localhost:3000

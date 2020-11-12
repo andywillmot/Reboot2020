@@ -6,6 +6,11 @@ Here's the architecture:
 
 ![Demo Architecture](https://github.com/andywillmot/Reboot2020/blob/master/architecture.png "Demo architecture")
 
+## Pre-requisites
+1) Python 3
+2) Nodejs
+
+
 ## The Identity Provider - set this up first so you have your config settings
 
 I've used Auth0, mainly because they have a lot of good tutorials on their website.  But I coud have used Google or served a local one through Docker (There's a few on DockerHub).  Basically you just need to register and setup an App for authentication, plus an API for access.  Here's the setup: [How to setup Auth0 as an IDP](https://github.com/andywillmot/Reboot2020/blob/master/creating-the-idp.md)
